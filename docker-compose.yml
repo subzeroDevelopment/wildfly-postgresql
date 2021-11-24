@@ -8,9 +8,10 @@ services:
             - POSTGRES_USER=myapp
             - POSTGRES_PASSWORD=my-password
     wildfly:
-        image: tonda100/wildfly-postgresql
+        build: .
         ports:
             - "8080:8080"
+            - "9990:9990"
         environment:
             - DB_HOST=postgres
             - DB_NAME=myapp

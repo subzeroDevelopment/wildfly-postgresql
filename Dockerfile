@@ -1,4 +1,4 @@
-FROM jboss/wildfly:18.0.0.Final
+FROM jboss/wildfly:latest
 MAINTAINER Antonin Stoklasek
 
 ENV WILDFLY_HOME /opt/jboss/wildfly

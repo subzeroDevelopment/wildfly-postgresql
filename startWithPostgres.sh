@@ -11,10 +11,12 @@ function wait_for_server() {
 }
 
 echo "=> Starting WildFly server"
-$WILDFLY_HOME/bin/standalone.sh -b=0.0.0.0 -c standalone.xml > /dev/null &
+$WILDFLY_HOME/bin/standalone.sh -b=0.0.0.0 -bmanagement=0.0.0.0 > /dev/null &
 
 echo "=> Waiting for the server to boot"
 wait_for_server
+
+$WILDFLY_HOME/bin/add-user.sh admin Admin21# --silent
 
 echo "=> Setup Datasource"
 $JBOSS_CLI -c << EOF
@@ -59,4 +61,4 @@ touch wildfly.started
 fi
 
 echo "=> Start Wildfly"
-$WILDFLY_HOME/bin/standalone.sh -b=0.0.0.0 -c standalone.xml
+$WILDFLY_HOME/bin/standalone.sh -b=0.0.0.0 -bmanagement=0.0.0.0
